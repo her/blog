@@ -13,20 +13,14 @@ TODO:
   * Make a frontend!
   * Write some tests 😅
 
-#routes
 
-## Index
-`GET /posts`
+### Index `GET /posts`
 
-## Show
-`GET /posts/:id`
+### Show `GET /posts/:id`
 
-## Create
-`POST /posts`
+### Create `POST /posts`
 
-## Update
-`PUT /posts/:id`
+### Update `PUT /posts/:id`
 
-## Delete
-`DELETE /posts/:id`
+### Delete `DELETE /posts/:id`
 
