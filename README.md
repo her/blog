@@ -14,13 +14,61 @@ TODO:
   * Write some tests 😅
 
 
-### Index `GET /posts`
 
-### Show `GET /posts/:id`
+# Posts API
 
-### Create `POST /posts`
+A post is a single entity. Posts contain the contents of a blog entry, a title, and an author.
 
-### Update `PUT /posts/:id`
+## Posts Object
+```
+{
+  "ID": 1,
+  "Title": "A Blog Post",
+  "Author": "Melanie Berkley",
+  "Content": "Lorem ipsum dolor sit amet..."
+}
+```
 
-### Delete `DELETE /posts/:id`
+### Index
+`GET /posts`
+
+* **Path Parameters**
+  * _None_
+* **Query Parameters**
+  * _None_
+* **Body Parameters**
+  * _None_
+
+**Response**
+```
+[
+  {<Post>}
+]
+```
+
+### Show
+`GET /posts/:id`
+
+Fetches the record for a specific post.
+
+* **Path Parameters**
+  * **ID** `[Integer]` The ID of the post
+* **Query Parameters**
+  * _None_
+* **Body Parameters**
+  * _None_
+
+**Response**
+```
+{<Post>}
+```
+
+### Create
+`POST /posts`
+
+### Update
+`PUT /posts/:id`
+
+### Delete
+`DELETE /posts/:id`
 
