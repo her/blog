@@ -72,3 +72,20 @@ Fetches the record for a specific post.
 ### Delete
 `DELETE /posts/:id`
 
+
+#### Notes
+```
+curl -X GET localhost:8081/posts/14
+```
+
+```
+curl -X POST -H "Content-type: application/json" -d '{"title": "A Blog Post", "author": "Melanie", "content": "May all beings be happy, healthy, and love with ease"}' localhost:8081/posts
+
+```
+
+curl -X PUT -H "Content-type: application/json" -d '{"title": "Update Post", "author": "Melanie", "content": "May all beings be happy, healthy, and love with ease"}' localhost:8081/posts
+```
+
+```
+curl -X DELETE localhost:8081/posts/15
+```
