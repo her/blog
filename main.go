@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -29,7 +30,10 @@ func routes() {
 	r.HandleFunc("/posts/{id}", Show).Methods("GET")
 	r.HandleFunc("/posts/{id}", Delete).Methods("DELETE")
 
-	log.Fatal(http.ListenAndServe(":8081", r))
+	// This could be bad CORS, don't put into prod without looking into these settings!
+	corsObj := handlers.AllowedOrigins([]string{"*"})
+	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
+	log.Fatal(http.ListenAndServe(":8081", handlers.CORS(corsObj, headersOk)(r)))
 }
 
 // getEnv key to search; value returned if key is not found
