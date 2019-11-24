@@ -1,19 +1,28 @@
 # A playground blog written in Go
 
-A super simple API ontop of a postgres database with a single model (Posts).
-I wanted to play around with Golang and see what it felt like writing a basic CRUD-y service.
+A small API written in Go, using Postgres, with a single model (Posts).
+I wanted to play around with Golang and see what it felt like writing a CRUD-y service.
 This is not ready for production (and may never be) and is just an example application.
-
 
 ### Requirements
  * Postgres with database `blog`
  * Go
+ * Some Go packages listed below
 
 TODO:
   * Make a frontend!
   * Write some tests 😅
 
+## Installation and Setup
+You need these packages:
 
+```
+go get -u github.com/gorilla/handlers
+go get -u github.com/gorilla/mux
+go get -u github.com/jinzhu/gorm
+go get -u github.com/joho/godotenv
+go get -u github.com/lib/pq
+```
 
 # Posts API
 
@@ -74,18 +83,28 @@ Fetches the record for a specific post.
 
 
 #### Notes
+**Create a post**
 ```
-curl -X GET localhost:8081/posts/14
-```
-
-```
-curl -X POST -H "Content-type: application/json" -d '{"title": "A Blog Post", "author": "Melanie", "content": "May all beings be happy, healthy, and love with ease"}' localhost:8081/posts
-
-```
-
-curl -X PUT -H "Content-type: application/json" -d '{"title": "Update Post", "author": "Melanie", "content": "May all beings be happy, healthy, and love with ease"}' localhost:8081/posts
+curl localhost:8081/posts \
+  -X POST \
+  -H "Content-type: application/json" \
+  -d '{"title": "A Blog Post", "author": "Melanie", "content": "May all beings be happy, healthy, and love with ease"}'
 ```
 
+**Get that post**
 ```
-curl -X DELETE localhost:8081/posts/15
+curl localhost:8081/posts/1
+```
+
+**Edit that post**
+```
+curl localhost:8081/posts/1 \
+  -X PUT \
+  -H "Content-type: application/json" \
+  -d '{"title": "A Post", "author": "Melanie", "content": "May all beings be happy, healthy, and love with ease"}'
+```
+
+**Delete that post**
+```
+curl -X DELETE localhost:8081/posts/1
 ```
